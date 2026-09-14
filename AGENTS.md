@@ -1,349 +1,262 @@
-# AGENTS.md
+# AGENTS.md — LLM Wiki
 
 ## 1. Objetivo
 
-Esta é uma LLM Wiki: uma base de conhecimento persistente mantida por um agente de IA.
+Esta Wiki é uma base de conhecimento persistente mantida por um agente LLM.
 
 O agente deve:
 
-* consultar a Wiki para responder perguntas;
-* adicionar novas fontes e informações;
-* criar e atualizar subjects;
-* criar summaries, comparisons e syntheses quando apropriado;
-* manter os relacionamentos entre os conteúdos;
-* manter o índice de navegação;
-* preservar a origem das informações;
-* evitar duplicações e inconsistências;
-* manter a estrutura da Wiki organizada.
+* registrar fontes e seus metadados;
+* transformar fontes em conhecimento útil;
+* relacionar conhecimentos, assuntos e fontes;
+* incorporar informações fornecidas pelo usuário;
+* atualizar conhecimentos existentes quando necessário;
+* preservar a proveniência das informações;
+* manter a Wiki navegável e consistente.
 
-A Wiki deve ser tratada como uma base de conhecimento viva. O agente deve preferir **atualizar e relacionar informações existentes** em vez de criar conteúdos duplicados.
+**Regra principal:** a Wiki deve armazenar conhecimento real, não apenas metadados, índices ou referências.
 
 ---
 
-# 1.1 Procedimento obrigatório de início
-
-Antes de responder, criar ou atualizar qualquer conteúdo, o agente deve:
-
-1. ler `AGENTS.md` integralmente;
-2. ler `wiki/index/navigation_index.md`;
-3. listar os arquivos relevantes em `wiki/`;
-4. pesquisar conteúdos equivalentes antes de criar novos arquivos;
-5. consultar o histórico Git quando a tarefa envolver uma atualização, conflito ou decisão sobre conteúdo existente;
-6. inspecionar sem alterar quando o usuário solicitar apenas uma análise, explicação ou dúvida.
-
-O agente deve aguardar autorização explícita antes de modificar arquivos quando o usuário estiver apenas pedindo esclarecimentos, opções ou recomendações.
-
-## 1.2 Operação orientada por LLM
-
-A LLM é o decisor da Wiki. Ela determina quais arquivos ler, criar, atualizar, relacionar ou consultar segundo este documento. Ferramentas de arquivo e Git existem apenas para executar operações e aplicar limites de segurança; elas não substituem o julgamento da LLM sobre a manutenção do conhecimento.
-
-O agente não deve usar limite fixo de arquivos ou de documentos consultados. Deve começar pelo índice e pelos conteúdos mais relevantes e, se o contexto for insuficiente, buscar e ler arquivos adicionais quantas vezes forem necessárias. Como o contexto de uma LLM é finito, a navegação deve ser progressiva: localizar, ler, avaliar suficiência e continuar a busca quando necessário.
-
-Para uma tarefa que afete a Wiki inteira, o agente deve percorrê-la em lotes e manter o progresso verificável, em vez de presumir que uma leitura parcial representa todo o acervo.
-
-# 2. Estrutura
-
-A estrutura principal é:
+## 2. Estrutura
 
 ```text
 llm-wiki/
-│
 ├── wiki/
 │   ├── sources/
 │   │   ├── metadata/
 │   │   └── files/
 │   │       ├── public/
 │   │       └── private/
-│   │
 │   ├── subjects/
-│   │
 │   ├── user_input/
-│   │
 │   ├── knowledge/
 │   │   ├── summaries/
 │   │   ├── comparisons/
 │   │   └── syntheses/
-│   │
 │   └── index/
 │       └── navigation_index.md
-│
 ├── AGENTS.md
 ├── README.md
 └── .gitignore
 ```
 
-Cada diretório possui uma função específica. O agente não deve criar novas categorias ou diretórios sem necessidade.
+Não crie novas categorias ou diretórios sem necessidade real.
 
 ---
 
-# 3. Princípios gerais
+## 3. Regra de operação
 
-## 3.1 Preservar a origem
+Antes de criar ou alterar qualquer conteúdo:
 
-Toda informação importante incorporada à Wiki deve ter sua origem identificável sempre que possível.
+1. Leia este `AGENTS.md`.
+2. Examine a estrutura existente.
+3. Procure documentos relacionados ao assunto.
+4. Reutilize documentos existentes quando apropriado.
+5. Evite duplicação.
+6. Preserve IDs já existentes.
+7. Após alterações, atualize os índices afetados.
 
-As possíveis origens incluem:
-
-* uma fonte externa;
-* um arquivo;
-* uma informação fornecida diretamente pelo usuário;
-* outro conhecimento já existente na Wiki.
-
-Não apresentar como fato independente uma informação cuja origem não possa ser determinada quando essa origem for relevante.
-
----
-
-## 3.2 Não modificar fontes originais
-
-Arquivos armazenados em `wiki/sources/files/` são fontes originais e devem ser tratados como imutáveis.
-
-O agente deve criar conhecimento derivado da fonte em vez de modificar a fonte original.
+Nunca presuma que um assunto, fonte ou conhecimento ainda não existe sem pesquisar.
 
 ---
 
-## 3.3 Evitar duplicação
+## 4. Tipos de informação
 
-Antes de criar um novo conteúdo, o agente deve verificar se já existe:
+### Source
 
-* um source equivalente;
-* um subject equivalente;
-* um summary da mesma fonte;
-* uma comparison equivalente;
-* uma synthesis equivalente.
-
-Quando existir conteúdo relacionado, preferir atualizá-lo ou relacioná-lo ao novo conteúdo.
-
----
-
-## 3.4 Não inventar informações
-
-O agente não deve preencher lacunas com informações inventadas.
-
-Quando uma informação não puder ser determinada a partir das fontes disponíveis, deve indicar a incerteza.
-
----
-
-## 3.5 Preservar informações conflitantes
-
-Se duas fontes apresentarem informações diferentes, o agente não deve simplesmente escolher uma e apagar a outra.
-
-Deve:
-
-1. identificar o conflito;
-2. preservar as fontes;
-3. indicar as informações conflitantes;
-4. informar, quando possível, qual fonte apresenta cada afirmação.
-
----
-
-# 4. IDs
-
-Os elementos persistentes devem possuir identificadores únicos.
-
-Usar os seguintes formatos:
-
-```text
-SRC-0001    → Source
-SUB-0001    → Subject
-USER-0001   → User input
-SUM-0001    → Summary
-CMP-0001    → Comparison
-SYN-0001    → Synthesis
-```
-
-O número deve ser incrementado para novos elementos do mesmo tipo.
-
-Nunca reutilizar um ID que já tenha sido utilizado.
-
-O ID deve permanecer estável mesmo que o nome ou caminho do arquivo seja alterado.
-
----
-
-# 5. Sources
-
-Sources representam as fontes originais utilizadas pela Wiki.
-
-Uma source pode ser:
-
-* página web;
-* artigo;
-* livro;
-* vídeo;
-* documento;
-* arquivo fornecido pelo usuário;
-* outra fonte externa identificável.
-
-## 5.1 Fontes públicas
-
-Quando existir uma URL pública e adequada para recuperar a fonte, preferir armazenar seus metadados e o endereço da fonte em vez de manter uma cópia local desnecessária.
-
-Exemplo:
-
-```yaml
-id: SRC-0001
-type: article
-title: Nome do artigo
-author: Nome do autor
-url: https://example.com/article
-visibility: public
-accessed_at: 2026-09-14
-```
-
----
-
-## 5.2 Arquivos
-
-Um arquivo deve ser armazenado localmente quando não houver uma forma pública adequada de recuperá-lo posteriormente.
-
-Arquivos ficam em:
-
-```text
-wiki/sources/files/public/
-wiki/sources/files/private/
-```
-
----
-
-## 5.3 Fontes privadas
-
-Arquivos privados devem ficar em:
-
-```text
-wiki/sources/files/private/
-```
-
-Eles não devem ser disponibilizados publicamente.
-
-Informações derivadas de uma fonte privada podem ser utilizadas na Wiki, mas devem indicar sua origem.
-
-Exemplo:
-
-```yaml
-id: SRC-0005
-type: file
-visibility: private
-path: sources/files/private/SRC-0005.pdf
-```
-
-Quando necessário, indicar no conteúdo:
-
-> Esta informação foi obtida de uma fonte privada fornecida pelo usuário. O arquivo original não pode ser disponibilizado.
-
-Nunca substituir uma fonte privada por uma URL inventada ou tentar tornar público seu conteúdo sem autorização.
-
----
-
-# 6. Subjects
-
-Subjects representam assuntos ou entidades sobre os quais a Wiki mantém conhecimento acumulado.
+Representa uma fonte externa ou arquivo original.
 
 Exemplos:
 
-```text
-subjects/
-├── retrieval-augmented-generation.md
-├── openai.md
-├── machine-learning.md
-└── ...
+* artigo;
+* livro;
+* documentação;
+* página web;
+* vídeo;
+* PDF;
+* repositório.
+
+A source registra **de onde a informação veio**.
+
+### User Input
+
+Representa informação fornecida diretamente pelo usuário.
+
+Pode conter:
+
+* conhecimento;
+* observações;
+* opiniões;
+* hipóteses;
+* correções;
+* contexto.
+
+Não trate automaticamente uma opinião do usuário como fato externo.
+
+### Summary
+
+Resume uma única source.
+
+Pergunta respondida:
+
+> "O que esta fonte apresenta?"
+
+Cada summary possui seu próprio ID.
+
+Exemplo:
+
+```yaml
+id: SUM-0001
+type: summary
+source: SRC-0001
 ```
 
-Um subject pode representar:
+**Não use o ID da source como ID do summary.**
 
-* pessoa;
-* empresa;
-* organização;
-* conceito;
-* tecnologia;
-* projeto;
-* filme;
-* série;
-* franquia;
-* ou qualquer outro assunto persistente.
+### Subject
 
-## 6.1 Criar um subject
+Representa um assunto, entidade, conceito ou objeto persistente sobre o qual a Wiki acumula conhecimento.
 
-Antes de criar um subject, verificar se já existe um subject equivalente.
+Um subject **deve conter conhecimento substantivo**.
 
-Criar um novo subject quando:
+Pode receber informações de:
 
-* o assunto possui identidade própria;
-* provavelmente será reutilizado;
-* possui ou poderá possuir múltiplas informações relacionadas;
-* merece uma página própria na Wiki.
+* várias sources;
+* vários summaries;
+* user inputs;
+* comparisons;
+* syntheses.
 
-Não criar um subject para cada informação isolada.
+Um subject **não deve ser apenas YAML, metadados ou uma lista de referências**.
+
+### Comparison
+
+Registra uma comparação estruturada entre dois ou mais assuntos, conceitos, entidades ou informações.
+
+Deve apresentar:
+
+* o que está sendo comparado;
+* critérios relevantes;
+* semelhanças;
+* diferenças;
+* conclusão, quando apropriado.
+
+### Synthesis
+
+Integra informações provenientes de múltiplas fontes ou conhecimentos.
+
+Uma synthesis deve produzir uma conclusão ou entendimento integrado, e não apenas juntar resumos.
 
 ---
 
-## 6.2 Atualizar um subject
+## 5. IDs
 
-Quando uma nova fonte trouxer informações sobre um subject existente, atualizar o subject em vez de criar outro.
+Use IDs estáveis e únicos por tipo:
 
-Manter referências para as fontes e conhecimentos relevantes.
+```text
+SRC-0001  → source
+SUB-0001  → subject
+USR-0001  → user input
+SUM-0001  → summary
+CMP-0001  → comparison
+SYN-0001  → synthesis
+```
 
-Exemplo de frontmatter:
+Regras:
+
+* nunca reutilize um ID;
+* não altere IDs existentes sem necessidade;
+* não confunda IDs de tipos diferentes;
+* antes de criar um ID, verifique os existentes;
+* referências devem usar os IDs corretos.
+
+---
+
+## 6. Sources
+
+Ao adicionar uma source:
+
+1. registre seus metadados;
+2. armazene o arquivo, quando aplicável;
+3. identifique os subjects relacionados;
+4. produza um summary quando houver conteúdo suficiente;
+5. incorpore o conhecimento relevante aos subjects;
+6. crie comparisons ou syntheses quando justificadas;
+7. atualize o índice.
+
+A source original deve ser preservada sempre que possível.
+
+Não invente informações sobre uma source.
+
+---
+
+## 7. Subjects
+
+Subjects são páginas de conhecimento persistente.
+
+Um subject deve responder, de forma progressivamente acumulativa:
+
+> "O que a Wiki sabe sobre este assunto?"
+
+Pode conter:
+
+* definição;
+* características;
+* funcionamento;
+* histórico;
+* exemplos;
+* aplicações;
+* informações relevantes;
+* relações;
+* divergências;
+* conclusões;
+* referências às sources que sustentam cada informação.
+
+Quando uma nova fonte acrescentar conhecimento a um subject existente, **atualize o subject em vez de criar outro subject duplicado**.
+
+Exemplo insuficiente:
 
 ```yaml
 ---
 id: SUB-0001
 type: subject
-title: Retrieval-Augmented Generation
-created: 2026-09-14
-updated: 2026-09-14
-
+title: Exemplo
 sources:
   - SRC-0001
-  - SRC-0004
-
-related_subjects:
-  - SUB-0002
-
 knowledge:
   - SUM-0001
-  - CMP-0001
-  - SYN-0002
 ---
 ```
 
----
+Isso apenas referencia conhecimento.
 
-# 7. User Input
-
-Informações fornecidas diretamente pelo usuário devem ser registradas em:
-
-```text
-wiki/user_input/
-```
-
-Exemplo:
-
-```text
-USER-0001.md
-```
-
-User input deve ser utilizado para preservar informações que não vieram de uma fonte externa.
-
-Uma pergunta do usuário, por si só, não precisa ser armazenada.
-
-Exemplo:
-
-```text
-"Compare RAG e fine-tuning."
-```
-
-é uma solicitação.
-
-Não transformar automaticamente essa solicitação em conhecimento persistente.
-
-Se o resultado da solicitação for considerado útil para a Wiki, ele pode ser armazenado como uma comparison ou synthesis.
+O subject deve possuir conteúdo substantivo além dessas referências.
 
 ---
 
-# 8. Knowledge
+## 8. User Input
 
-O diretório `knowledge/` contém informações produzidas ou organizadas a partir das fontes, subjects e user inputs.
+Informações fornecidas pelo usuário devem ser registradas quando forem relevantes para a base de conhecimento.
 
-Ele possui três tipos principais:
+Diferencie claramente:
+
+* fato fornecido pelo usuário;
+* opinião;
+* hipótese;
+* interpretação;
+* correção;
+* informação proveniente de fonte externa.
+
+Não transforme automaticamente user input em conhecimento factual confirmado.
+
+Quando apropriado, registre a origem da informação.
+
+---
+
+## 9. Knowledge
+
+Conhecimento deve ser organizado de acordo com sua função:
 
 ```text
 knowledge/
@@ -352,299 +265,245 @@ knowledge/
 └── syntheses/
 ```
 
+Não coloque tudo em summaries.
+
+Use:
+
+* `summary` → uma fonte;
+* `comparison` → comparação;
+* `synthesis` → integração de múltiplas informações.
+
+O conhecimento mais importante e persistente sobre um assunto deve também estar disponível no respectivo `subject`.
+
 ---
 
-# 9. Summaries
+## 10. Proveniência
 
-Um summary é um resumo de uma fonte específica.
+Toda informação derivada de uma fonte deve permitir descobrir sua origem.
 
-Ele responde:
-
-> O que esta fonte apresenta?
-
-Um summary deve estar associado principalmente a uma única source.
-
-Exemplo:
+Sempre que possível, mantenha relações como:
 
 ```text
-knowledge/summaries/SRC-0001.md
+Source
+  ↓
+Summary
+  ↓
+Subject
+  ↓
+Comparison / Synthesis
 ```
 
-Um summary pode conter:
+Uma informação pode ter múltiplas fontes.
 
-* ideia principal;
-* principais informações;
-* argumentos;
-* resultados;
-* conclusões;
-* informações relevantes para a Wiki.
+Uma source pode contribuir para múltiplos subjects.
 
-Não adicionar informações externas ao resumo sem indicar claramente que elas vieram de outra origem.
+Não atribua uma informação a uma fonte que não a sustenta.
+
+Quando houver conflito entre fontes, preserve o conflito e indique as diferentes posições em vez de escolher arbitrariamente uma delas.
 
 ---
 
-# 10. Comparisons
+## 11. Relações
 
-Uma comparison compara dois ou mais elementos.
+Relações devem ser registradas diretamente nos documentos usando:
 
-Ela responde:
-
-> Como X e Y são semelhantes ou diferentes?
-
-Uma comparison pode utilizar:
-
-* subjects;
-* sources;
-* summaries;
-* outras informações da Wiki.
-
-Exemplo:
-
-```text
-knowledge/comparisons/rag-vs-fine-tuning.md
-```
-
-A comparison deve deixar claro quais elementos estão sendo comparados e quais informações serviram de base.
-
-Quando a comparação contiver conclusões que dependem de informações externas, registrar suas fontes.
-
----
-
-# 11. Syntheses
-
-Uma synthesis combina informações provenientes de diferentes elementos para produzir uma visão integrada.
-
-Ela responde:
-
-> O que podemos concluir considerando essas informações em conjunto?
-
-Uma synthesis pode utilizar:
-
-* sources;
-* user inputs;
-* subjects;
-* summaries;
-* comparisons;
-* outras syntheses.
-
-A synthesis não deve simplesmente concatenar conteúdos.
-
-Ela deve produzir uma interpretação ou conclusão baseada nas informações disponíveis, deixando claras suas bases.
-
-Quando houver incertezas ou conflitos entre as fontes, eles devem ser explicitados.
-
----
-
-# 12. Relacionamentos
-
-Não existe um arquivo separado de relacionamentos.
-
-Os relacionamentos devem ser registrados nos próprios documentos através de:
-
+* IDs;
 * frontmatter;
 * links Markdown;
-* referências por ID.
+* referências explícitas no texto.
 
-Exemplo:
+Exemplos:
 
 ```yaml
-related_subjects:
-  - SUB-0002
-
 sources:
   - SRC-0001
 
+related_subjects:
+  - SUB-0002
+
 knowledge:
   - SUM-0001
-  - CMP-0001
+  - SYN-0001
 ```
 
-Isso evita que exista uma segunda fonte de verdade contendo os relacionamentos.
-
-Sempre que possível, utilizar links Markdown para permitir navegação direta entre os conteúdos.
+Não crie um índice separado de relações apenas para duplicar essas informações.
 
 ---
 
-# 13. Navigation Index
+## 12. Navigation Index
 
-O arquivo:
+`wiki/index/navigation_index.md` serve para responder:
+
+> "O que existe na Wiki e onde está?"
+
+O índice deve apontar para:
+
+* sources;
+* subjects;
+* user inputs;
+* summaries;
+* comparisons;
+* syntheses.
+
+O índice **não é a fonte de verdade**.
+
+O conteúdo real deve permanecer nos documentos correspondentes.
+
+Após criar, remover ou renomear documentos, atualize o índice.
+
+---
+
+## 13. Pesquisa antes de criação
+
+Antes de criar qualquer documento, pesquise por:
+
+* título;
+* assunto;
+* entidades relacionadas;
+* IDs;
+* conceitos equivalentes;
+* documentos semelhantes.
+
+Se já existir conteúdo relacionado:
+
+* atualize-o, se representar o mesmo objeto;
+* complemente-o, se houver nova informação;
+* crie um novo documento somente se representar algo realmente distinto.
+
+Evite criar documentos duplicados.
+
+---
+
+## 14. Atualização
+
+Ao adicionar nova informação:
+
+1. localize o conhecimento existente;
+2. determine se a informação é nova, complementar ou conflitante;
+3. atualize o documento apropriado;
+4. preserve informações anteriores quando ainda forem relevantes;
+5. registre a nova proveniência;
+6. atualize `updated`;
+7. atualize o índice se necessário.
+
+Não substitua conteúdo antigo simplesmente porque encontrou uma fonte nova.
+
+---
+
+## 15. Contradições e incerteza
+
+Não invente respostas para preencher lacunas.
+
+Quando houver incerteza:
 
 ```text
-wiki/index/navigation_index.md
+Não confirmado
+Possível interpretação
+Fonte A afirma X
+Fonte B afirma Y
 ```
 
-serve para responder:
-
-> O que existe na Wiki e onde está?
-
-Ele deve conter referências para os principais conteúdos da Wiki e uma descrição curta.
-
-Exemplo:
-
-```markdown
-# Navigation Index
-
-## Subjects
-
-- [Retrieval-Augmented Generation](../subjects/retrieval-augmented-generation.md)
-  Técnica relacionada à recuperação de informações para LLMs.
-
-## Knowledge
-
-- [Resumo SRC-0001](../knowledge/summaries/SRC-0001.md)
-  Resumo da fonte SRC-0001.
-
-- [RAG vs Fine-tuning](../knowledge/comparisons/rag-vs-fine-tuning.md)
-  Comparação entre as duas abordagens.
-```
-
-O índice é um mecanismo de navegação, não a fonte de verdade.
-
-Se necessário, ele deve poder ser reconstruído a partir dos arquivos da Wiki.
+Quando houver conflito entre fontes, mantenha as posições separadas e explique a diferença quando houver evidência suficiente.
 
 ---
 
-# 14. Busca e consulta
+## 16. Segurança e privacidade
 
-Ao responder uma pergunta do usuário, o agente deve primeiro utilizar o conhecimento existente na Wiki quando ele for relevante.
-
-Uma estratégia básica é:
+Informações privadas devem permanecer em:
 
 ```text
-Pergunta
-   ↓
-Navigation Index
-   ↓
-Subjects relevantes
-   ↓
-Knowledge relevante
-   ↓
-Sources necessárias
-   ↓
-Resposta
+wiki/sources/files/private/
 ```
 
-Não é necessário consultar todos os arquivos da Wiki para cada pergunta.
+Não exponha conteúdo privado em:
 
-O agente deve localizar primeiro os conteúdos mais relevantes.
+* fontes públicas;
+* summaries públicos;
+* README;
+* índices públicos;
+* Git, quando o conteúdo não deveria ser versionado.
 
-Quando a Wiki não possuir informações suficientes, o agente pode buscar novas fontes externas caso tenha acesso a ferramentas apropriadas.
-
-Informações externas novas devem ser tratadas como novas sources antes de serem incorporadas ao conhecimento persistente.
-
----
-
-# 15. Adição de novas informações
-
-Ao receber uma nova fonte ou informação:
-
-1. Identificar a origem.
-2. Verificar se a fonte já existe.
-3. Criar um novo ID somente se necessário.
-4. Registrar os metadados.
-5. Determinar se o conteúdo deve ser armazenado como arquivo ou apenas como referência.
-6. Identificar subjects existentes relacionados.
-7. Criar novos subjects somente quando necessário.
-8. Criar ou atualizar summaries, comparisons ou syntheses quando apropriado.
-9. Adicionar os relacionamentos.
-10. Atualizar o navigation index.
-11. Verificar se existem inconsistências ou duplicações.
+Revise `.gitignore` antes de adicionar arquivos potencialmente privados.
 
 ---
 
-# 16. Atualização de informações
+## 17. Git
 
-Quando uma nova fonte atualizar uma informação existente:
+O Git deve preservar o histórico da Wiki.
 
-1. localizar o conteúdo existente;
-2. verificar sua origem;
-3. comparar a nova informação com a anterior;
-4. preservar a referência às fontes relevantes;
-5. atualizar o conteúdo quando a nova informação for mais atual ou relevante;
-6. preservar informações históricas quando elas forem importantes;
-7. atualizar `updated`;
-8. atualizar os relacionamentos afetados;
-9. atualizar o índice caso necessário.
+Antes de alterações importantes:
 
-Não apagar informações antigas simplesmente porque existe uma informação nova, especialmente quando elas representam estados diferentes em momentos diferentes.
+* verifique o estado do repositório;
+* evite sobrescrever alterações do usuário;
+* não remova arquivos sem motivo;
+* não faça commits contendo dados privados.
+
+Commits devem representar mudanças coerentes na base.
 
 ---
 
-# 17. Manutenção
+## 18. Manutenção
 
-Periodicamente, o agente deve verificar:
+Periodicamente procure por:
 
-* links quebrados;
-* referências para IDs inexistentes;
-* arquivos sem metadados;
-* metadados sem arquivo correspondente quando necessário;
-* subjects duplicados;
-* knowledge duplicado;
-* conteúdos sem origem quando uma origem deveria existir;
-* entradas incorretas no navigation index;
-* relacionamentos que apontam para conteúdos inexistentes.
+* IDs duplicados;
+* referências quebradas;
+* documentos duplicados;
+* subjects sem conhecimento substantivo;
+* summaries sem source;
+* referências para documentos inexistentes;
+* arquivos privados expostos;
+* índice desatualizado;
+* metadados inconsistentes.
 
-O agente deve corrigir problemas simples automaticamente quando tiver segurança para fazê-lo.
-
-Problemas ambíguos devem ser apresentados ao usuário em vez de serem resolvidos por suposição.
+Corrija problemas sem apagar conhecimento válido.
 
 ---
 
-# 18. Git
+## 19. Regra de decisão
 
-O Git deve ser utilizado para versionar a Wiki.
-
-O agente pode utilizar Git para:
-
-* verificar alterações;
-* revisar mudanças;
-* identificar arquivos modificados;
-* criar commits quando autorizado pelas regras do ambiente.
-
-Exemplos de mensagens de commit:
+Ao receber uma nova informação, siga esta sequência:
 
 ```text
-wiki: add RAG subject
-wiki: add summary for SRC-0004
-wiki: add RAG vs fine-tuning comparison
-wiki: update RAG information
-wiki: maintenance - fix broken links
+Nova informação
+      ↓
+Pesquisar Wiki
+      ↓
+Já existe?
+ ┌────┴────┐
+SIM       NÃO
+ ↓          ↓
+Atualizar   Criar
+ ↓          ↓
+Relacionar ao subject
+      ↓
+Gerar summary/comparison/synthesis
+quando necessário
+      ↓
+Atualizar índice
 ```
 
-O histórico do Git deve ser utilizado para acompanhar a evolução da Wiki.
+Não crie automaticamente todos os tipos de documento para toda informação.
+
+Crie somente o que acrescentar valor.
 
 ---
 
-# 19. Segurança e privacidade
+## 20. Regra de ouro
 
-Informações privadas devem permanecer privadas.
+**A Wiki deve acumular conhecimento útil, rastreável e navegável.**
 
-O agente não deve:
-
-* publicar arquivos privados;
-* copiar conteúdo privado para uma fonte pública;
-* colocar arquivos privados em commits destinados a repositórios públicos;
-* inventar URLs para fontes privadas;
-* revelar informações privadas sem autorização.
-
-O conteúdo derivado de uma fonte privada pode ser utilizado na Wiki quando permitido, mas sua origem deve continuar identificável como privada.
-
----
-
-# 20. Regra de ouro
-
-Ao modificar a Wiki, o agente deve sempre considerar:
+Não confunda:
 
 ```text
-1. De onde veio esta informação?
-2. Ela já existe na Wiki?
-3. A que subject ela pertence?
-4. É um summary, comparison ou synthesis?
-5. Com quais outros elementos ela se relaciona?
-6. Como preservar sua proveniência?
-7. O que precisa ser atualizado por causa dessa alteração?
+metadados ≠ conhecimento
+referência ≠ conteúdo
+summary ≠ subject
+source ≠ summary
+comparison ≠ synthesis
+índice ≠ fonte de verdade
 ```
 
-O objetivo não é simplesmente adicionar arquivos.
+Sempre prefira:
 
-O objetivo é manter uma base de conhecimento **organizada, rastreável, interligada, atualizável e confiável**.
+**pesquisar → entender → relacionar → atualizar → registrar a origem → manter a Wiki consistente.**
