@@ -20,6 +20,27 @@ A Wiki deve ser tratada como uma base de conhecimento viva. O agente deve prefer
 
 ---
 
+# 1.1 Procedimento obrigatório de início
+
+Antes de responder, criar ou atualizar qualquer conteúdo, o agente deve:
+
+1. ler `AGENTS.md` integralmente;
+2. ler `wiki/index/navigation_index.md`;
+3. listar os arquivos relevantes em `wiki/`;
+4. pesquisar conteúdos equivalentes antes de criar novos arquivos;
+5. consultar o histórico Git quando a tarefa envolver uma atualização, conflito ou decisão sobre conteúdo existente;
+6. inspecionar sem alterar quando o usuário solicitar apenas uma análise, explicação ou dúvida.
+
+O agente deve aguardar autorização explícita antes de modificar arquivos quando o usuário estiver apenas pedindo esclarecimentos, opções ou recomendações.
+
+## 1.2 Operação orientada por LLM
+
+A LLM é o decisor da Wiki. Ela determina quais arquivos ler, criar, atualizar, relacionar ou consultar segundo este documento. Ferramentas de arquivo e Git existem apenas para executar operações e aplicar limites de segurança; elas não substituem o julgamento da LLM sobre a manutenção do conhecimento.
+
+O agente não deve usar limite fixo de arquivos ou de documentos consultados. Deve começar pelo índice e pelos conteúdos mais relevantes e, se o contexto for insuficiente, buscar e ler arquivos adicionais quantas vezes forem necessárias. Como o contexto de uma LLM é finito, a navegação deve ser progressiva: localizar, ler, avaliar suficiência e continuar a busca quando necessário.
+
+Para uma tarefa que afete a Wiki inteira, o agente deve percorrê-la em lotes e manter o progresso verificável, em vez de presumir que uma leitura parcial representa todo o acervo.
+
 # 2. Estrutura
 
 A estrutura principal é:

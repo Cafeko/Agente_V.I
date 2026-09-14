@@ -1,0 +1,20 @@
+# Fontes privadas: preserve somente o marcador da estrutura no Git
+wiki/sources/files/private/*
+!wiki/sources/files/private/.gitkeep
+
+# Credenciais e configurações locais
+.env
+.env.*
+!.env.example
+
+# Ambientes e cache Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# Ferramentas e sistema operacional
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
