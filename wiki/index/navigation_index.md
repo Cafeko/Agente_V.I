@@ -12,6 +12,9 @@
 - [SRC-0005 — Aulas 05–06 CriaComp (resumo, público)](../sources/metadata/SRC-0005-aulas-05-06-criacomp.md)
 - [SRC-0006 — Aula 07 CriaComp (resumo, público)](../sources/metadata/SRC-0006-aula-07-criacomp.md)
 - [SRC-0007 — iStar 2.0 Language Guide (artigo, público)](../sources/metadata/SRC-0007-istar2-guide.md)
+- [SRC-0008 — Estações do ano no Brasil — verão (páginas web, pública)](../sources/metadata/SRC-0008-estacoes-verao-brasil.md)
+- [SRC-0009 — Inverno no Brasil em 2026 (páginas web, pública)](../sources/metadata/SRC-0009-inverno-brasil.md)
+- [SRC-0010 — Variables and Operators, Odin (página web, pública)](../sources/metadata/SRC-0010-odin-variables-operators.md)
 
 ## Subjects
 
@@ -19,6 +22,8 @@
 - [SUB-0002 — Criatividade: teorias, modelos e lentes](../subjects/SUB-0002-criatividade-teorias-modelos.md)
 - [SUB-0003 — Criatividade Computacional (CIn-UFPE 2026.2): a disciplina](../subjects/SUB-0003-criacomp-disciplina.md)
 - [SUB-0004 — iStar 2.0: linguagem de modelagem intencional](../subjects/SUB-0004-istar2-modelagem-intencional.md)
+- [SUB-0005 — Estações do ano no Brasil — verão e inverno](../subjects/SUB-0005-estacoes-do-ano-verao-brasil.md)
+- [SUB-0006 — JavaScript: variáveis e operadores](../subjects/SUB-0006-javascript-variaveis-operadores.md)
 
 ## User Input
 
@@ -33,10 +38,13 @@
 - [SUM-0005 — Aulas 05–06 CriaComp (de SRC-0005)](../knowledge/summaries/SUM-0005-aulas-05-06-criacomp.md)
 - [SUM-0006 — Aula 07 CriaComp (de SRC-0006)](../knowledge/summaries/SUM-0006-aula-07-criacomp.md)
 - [SUM-0007 — iStar 2.0 Language Guide (de SRC-0007)](../knowledge/summaries/SUM-0007-istar2-guide.md)
+- [SUM-0008 — Estações do ano no Brasil — verão (de SRC-0008)](../knowledge/summaries/SUM-0008-estacoes-verao-brasil.md)
+- [SUM-0009 — Inverno no Brasil em 2026 (de SRC-0009)](../knowledge/summaries/SUM-0009-inverno-brasil.md)
+- [SUM-0010 — Variables and Operators, Odin (de SRC-0010)](../knowledge/summaries/SUM-0010-js-variaveis-operadores.md)
 
 ## Comparisons
 
-Nenhuma comparison cadastrada.
+- [CMP-0001 — Haskell vs JavaScript (escopo do registrado)](../knowledge/comparisons/CMP-0001-haskell-vs-javascript.md)
 
 ## Syntheses
 
