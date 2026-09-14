@@ -16,11 +16,15 @@ O agente deve:
 
 **Regra principal:** a Wiki deve armazenar conhecimento real, não apenas metadados, índices ou referências.
 
+**Regra de conhecimento:** o agente deve responder sobre a Wiki usando somente informações registradas nela. Conhecimento externo à Wiki não deve ser apresentado como conhecimento da Wiki.
+
+Se a Wiki não possuir informação suficiente para responder, o agente deve informar isso explicitamente e não preencher a lacuna com conhecimento próprio.
+
 ---
 
 ## 2. Estrutura
 
-```text
+```text id="kuwnqb"
 llm-wiki/
 ├── wiki/
 │   ├── sources/
@@ -57,7 +61,15 @@ Antes de criar ou alterar qualquer conteúdo:
 6. Preserve IDs já existentes.
 7. Após alterações, atualize os índices afetados.
 
-Nunca presuma que um assunto, fonte ou conhecimento ainda não existe sem pesquisar.
+Antes de responder sobre informações da Wiki:
+
+1. Pesquise a Wiki.
+2. Localize os documentos relevantes.
+3. Verifique se eles realmente sustentam a resposta.
+4. Responda somente com informações disponíveis na Wiki.
+5. Se não houver informação suficiente, informe que a Wiki não possui informação suficiente.
+
+**Não use conhecimento externo para preencher lacunas.**
 
 ---
 
@@ -106,7 +118,7 @@ Cada summary possui seu próprio ID.
 
 Exemplo:
 
-```yaml
+```yaml id="dhp21j"
 id: SUM-0001
 type: summary
 source: SRC-0001
@@ -154,7 +166,7 @@ Uma synthesis deve produzir uma conclusão ou entendimento integrado, e não ape
 
 Use IDs estáveis e únicos por tipo:
 
-```text
+```text id="2bttnr"
 SRC-0001  → source
 SUB-0001  → subject
 USR-0001  → user input
@@ -217,7 +229,7 @@ Quando uma nova fonte acrescentar conhecimento a um subject existente, **atualiz
 
 Exemplo insuficiente:
 
-```yaml
+```yaml id="j8vde0"
 ---
 id: SUB-0001
 type: subject
@@ -258,7 +270,7 @@ Quando apropriado, registre a origem da informação.
 
 Conhecimento deve ser organizado de acordo com sua função:
 
-```text
+```text id="20vwc0"
 knowledge/
 ├── summaries/
 ├── comparisons/
@@ -283,7 +295,7 @@ Toda informação derivada de uma fonte deve permitir descobrir sua origem.
 
 Sempre que possível, mantenha relações como:
 
-```text
+```text id="qetjqc"
 Source
   ↓
 Summary
@@ -314,7 +326,7 @@ Relações devem ser registradas diretamente nos documentos usando:
 
 Exemplos:
 
-```yaml
+```yaml id="1nzhxt"
 sources:
   - SRC-0001
 
@@ -353,7 +365,64 @@ Após criar, remover ou renomear documentos, atualize o índice.
 
 ---
 
-## 13. Pesquisa antes de criação
+## 13. Pesquisa e consulta
+
+A Wiki é a fonte de verdade para o conhecimento do agente.
+
+Ao responder uma pergunta relacionada à Wiki:
+
+* pesquise primeiro os `subjects`;
+* pesquise `sources` e `summaries` relacionados;
+* consulte `comparisons` e `syntheses` quando relevantes;
+* considere `user_input` quando ele fizer parte do conhecimento registrado;
+* siga as referências entre documentos;
+* responda somente com informações sustentadas pelo conteúdo da Wiki.
+
+### Conhecimento externo
+
+O agente **não deve usar conhecimento externo à Wiki durante consultas normais**.
+
+Isso inclui:
+
+* conhecimento prévio do modelo;
+* informações obtidas anteriormente fora da Wiki;
+* informações de outras conversas que não estejam registradas na Wiki;
+* informações da Internet;
+* suposições baseadas em conhecimento geral;
+* inferências apresentadas como fatos da Wiki.
+
+Se uma informação não estiver registrada na Wiki, trate-a como **desconhecida pela Wiki**.
+
+Exemplo:
+
+> Usuário: "O que a Wiki sabe sobre X?"
+
+Se a Wiki não possuir informações sobre X:
+
+> "A Wiki não possui informações suficientes sobre X."
+
+Não faça:
+
+> "A Wiki não possui informações sobre X, mas eu sei que X é..."
+
+### Pesquisa externa
+
+Somente use informações externas quando o usuário solicitar explicitamente uma pesquisa ou quando a tarefa exigir uma fonte externa.
+
+Nesse caso, diferencie claramente:
+
+```text
+Conhecimento da Wiki
+Conhecimento externo
+```
+
+Conhecimento externo não deve ser apresentado como conhecimento existente na Wiki.
+
+Não adicione automaticamente conhecimento externo à Wiki sem que isso faça parte da tarefa solicitada.
+
+---
+
+## 14. Pesquisa antes de criação
 
 Antes de criar qualquer documento, pesquise por:
 
@@ -374,7 +443,7 @@ Evite criar documentos duplicados.
 
 ---
 
-## 14. Atualização
+## 15. Atualização
 
 Ao adicionar nova informação:
 
@@ -390,13 +459,13 @@ Não substitua conteúdo antigo simplesmente porque encontrou uma fonte nova.
 
 ---
 
-## 15. Contradições e incerteza
+## 16. Contradições e incerteza
 
 Não invente respostas para preencher lacunas.
 
 Quando houver incerteza:
 
-```text
+```text id="hlee72"
 Não confirmado
 Possível interpretação
 Fonte A afirma X
@@ -407,11 +476,11 @@ Quando houver conflito entre fontes, mantenha as posições separadas e explique
 
 ---
 
-## 16. Segurança e privacidade
+## 17. Segurança e privacidade
 
 Informações privadas devem permanecer em:
 
-```text
+```text id="8ryo6r"
 wiki/sources/files/private/
 ```
 
@@ -427,7 +496,7 @@ Revise `.gitignore` antes de adicionar arquivos potencialmente privados.
 
 ---
 
-## 17. Git
+## 18. Git
 
 O Git deve preservar o histórico da Wiki.
 
@@ -442,7 +511,7 @@ Commits devem representar mudanças coerentes na base.
 
 ---
 
-## 18. Manutenção
+## 19. Manutenção
 
 Periodicamente procure por:
 
@@ -460,11 +529,11 @@ Corrija problemas sem apagar conhecimento válido.
 
 ---
 
-## 19. Regra de decisão
+## 20. Regra de decisão
 
 Ao receber uma nova informação, siga esta sequência:
 
-```text
+```text id="ytt4vb"
 Nova informação
       ↓
 Pesquisar Wiki
@@ -487,23 +556,47 @@ Não crie automaticamente todos os tipos de documento para toda informação.
 
 Crie somente o que acrescentar valor.
 
+Ao responder uma consulta:
+
+```text id="9m1j4p"
+Pergunta
+   ↓
+Pesquisar Wiki
+   ↓
+Encontrou informação suficiente?
+ ┌─────────┴─────────┐
+SIM                  NÃO
+ ↓                     ↓
+Responder             Informar que
+com a Wiki            a Wiki não sabe
+```
+
+Nunca complete uma resposta com conhecimento externo sem solicitação explícita.
+
 ---
 
-## 20. Regra de ouro
+## 21. Regra de ouro
 
 **A Wiki deve acumular conhecimento útil, rastreável e navegável.**
 
+Durante consultas normais, **a Wiki é a única fonte de conhecimento permitida**.
+
 Não confunda:
 
-```text
+```text id="45vhps"
 metadados ≠ conhecimento
 referência ≠ conteúdo
 summary ≠ subject
 source ≠ summary
 comparison ≠ synthesis
 índice ≠ fonte de verdade
+conhecimento do modelo ≠ conhecimento da Wiki
 ```
 
 Sempre prefira:
 
-**pesquisar → entender → relacionar → atualizar → registrar a origem → manter a Wiki consistente.**
+**pesquisar → verificar na Wiki → relacionar → responder somente com o que está registrado.**
+
+Se a Wiki não possuir informação suficiente:
+
+**não invente, não complete com conhecimento externo e não trate inferências como fatos. Informe que a Wiki não possui informação suficiente.**
