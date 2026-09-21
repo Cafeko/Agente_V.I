@@ -190,14 +190,16 @@ Regras:
 Ao adicionar uma source:
 
 1. registre seus metadados;
-2. armazene o arquivo, quando aplicável;
+2. **verifique disponibilidade pública antes de armazenar** — antes de copiar qualquer arquivo, verifique se a fonte já está disponível publicamente (livro, artigo, documentação, página web, vídeo, PDF open-access, repositório público, DOI/URL estável);
+   - se **publicamente disponível**: **não armazene cópia local** em `wiki/sources/files/public/`; registre apenas `source_url`/`pdf_url` (e, quando houver, DOI) com data de verificação e indique `local_file: none (fonte pública — acesso por link)`; use o conteúdo fornecido apenas para produzir o summary/subject, sem criar duplicata;
+   - se **não publicamente disponível, privada ou com necessidade de preservação/autorização**: então armazene o arquivo em `wiki/sources/files/private/` (ou `public/` se o autor autorizou) e registre `local_file`;
 3. identifique os subjects relacionados;
 4. produza um summary quando houver conteúdo suficiente;
 5. incorpore o conhecimento relevante aos subjects;
 6. crie comparisons ou syntheses quando justificadas;
 7. atualize o índice.
 
-A source original deve ser preservada sempre que possível.
+A source original deve ser preservada sempre que possível, **respeitando a regra de verificação pública acima**.
 
 Não invente informações sobre uma source.
 
@@ -522,6 +524,7 @@ Periodicamente procure por:
 * summaries sem source;
 * referências para documentos inexistentes;
 * arquivos privados expostos;
+* cópias locais desnecessárias de fontes públicas (verificar `source_url`/`pdf_url` e remover duplicatas em `wiki/sources/files/public/`);
 * índice desatualizado;
 * metadados inconsistentes.
 
