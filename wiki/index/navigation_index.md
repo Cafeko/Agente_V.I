@@ -21,6 +21,9 @@
 - [SRC-0014 — Rascunho GC1: Quem está no controle? (rascunho, privado)](../sources/metadata/SRC-0014-rascunho-gc1-quem-esta-no-controle.md)
 - [SRC-0015 — MCP - Model Context Protocol (O USB das IAs), Código Fonte TV (vídeo, público)](../sources/metadata/SRC-0015-video-mcp-usb-das-ias.md)
 - [SRC-0016 — MCP não é mágica, Augusto Galego (vídeo, público)](../sources/metadata/SRC-0016-video-mcp-nao-e-magica.md)
+- [SRC-0017 — Novos ITENS, CLASSES e SKIN na DLC de Elden Ring, HadesPlays (vídeo, público)](../sources/metadata/SRC-0017-video-elden-ring-dlc-tarnished-pack.md)
+- [SRC-0018 — Tarnished Edition Switch 2, Bandai Namco Europe (web, público)](../sources/metadata/SRC-0018-elden-ring-tarnished-edition-bandai.md)
+- [SRC-0019 — Tarnished Edition data e preço, IGN (web, público)](../sources/metadata/SRC-0019-elden-ring-tarnished-edition-ign.md)
 
 ## Subjects
 
@@ -32,6 +35,7 @@
 - [SUB-0006 — JavaScript: variáveis e operadores](../subjects/SUB-0006-javascript-variaveis-operadores.md)
 - [SUB-0007 — GranDIHC-BR: Grandes Desafios de Pesquisa em IHC no Brasil 2025-2035](../subjects/SUB-0007-grandihc-br-2025-2035.md)
 - [SUB-0008 — MCP — Model Context Protocol](../subjects/SUB-0008-mcp-model-context-protocol.md)
+- [SUB-0009 — Elden Ring — DLCs Shadow of the Erdtree e Tarnished Edition](../subjects/SUB-0009-elden-ring-dlc-tarnished-edition.md)
 
 ## User Input
 
@@ -56,6 +60,8 @@
 - [SUM-0014 — Rascunho GC1: Quem está no controle? (de SRC-0014, privado)](../knowledge/summaries/SUM-0014-rascunho-gc1-quem-esta-no-controle.md)
 - [SUM-0015 — MCP (O USB das IAs), Código Fonte TV (de SRC-0015)](../knowledge/summaries/SUM-0015-video-mcp-usb-das-ias.md)
 - [SUM-0016 — MCP não é mágica, Augusto Galego (de SRC-0016)](../knowledge/summaries/SUM-0016-video-mcp-nao-e-magica.md)
+- [SUM-0018 — Tarnished Edition Bandai (de SRC-0018)](../knowledge/summaries/SUM-0018-elden-ring-tarnished-edition.md)
+- [SUM-0019 — Tarnished Edition IGN (de SRC-0019)](../knowledge/summaries/SUM-0019-elden-ring-tarnished-edition-ign.md)
 
 ## Comparisons
 
