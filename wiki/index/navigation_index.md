@@ -19,6 +19,8 @@
 - [SRC-0012 — Relatório GC1: Agência compartilhada humano-IA (Grupo CIn-UFPE, 2026, público)](../sources/metadata/SRC-0012-relatorio-gc1-agencia-compartilhada.md)
 - [SRC-0013 — Slides GC1: Novas Abordagens Teóricas e Metodológicas (CIn-UFPE, público)](../sources/metadata/SRC-0013-slides-gc1-agencia-compartilhada.md)
 - [SRC-0014 — Rascunho GC1: Quem está no controle? (rascunho, privado)](../sources/metadata/SRC-0014-rascunho-gc1-quem-esta-no-controle.md)
+- [SRC-0015 — MCP - Model Context Protocol (O USB das IAs), Código Fonte TV (vídeo, público)](../sources/metadata/SRC-0015-video-mcp-usb-das-ias.md)
+- [SRC-0016 — MCP não é mágica, Augusto Galego (vídeo, público)](../sources/metadata/SRC-0016-video-mcp-nao-e-magica.md)
 
 ## Subjects
 
@@ -29,10 +31,12 @@
 - [SUB-0005 — Estações do ano no Brasil — verão e inverno](../subjects/SUB-0005-estacoes-do-ano-verao-brasil.md)
 - [SUB-0006 — JavaScript: variáveis e operadores](../subjects/SUB-0006-javascript-variaveis-operadores.md)
 - [SUB-0007 — GranDIHC-BR: Grandes Desafios de Pesquisa em IHC no Brasil 2025-2035](../subjects/SUB-0007-grandihc-br-2025-2035.md)
+- [SUB-0008 — MCP — Model Context Protocol](../subjects/SUB-0008-mcp-model-context-protocol.md)
 
 ## User Input
 
 - [USR-0001 — Anotações de estudo: Programação Funcional (Haskell)](../user_input/USR-0001-anotacoes-programacao-funcional-haskell.md)
+- [USR-0002 — Explicação sobre MCP (Model Context Protocol) solicitada ao Gemini](../user_input/USR-0002-explicacao-mcp-gemini.md)
 
 ## Summaries
 
@@ -50,6 +54,8 @@
 - [SUM-0012 — Relatório GC1: Agência compartilhada humano-IA (de SRC-0012)](../knowledge/summaries/SUM-0012-relatorio-gc1-agencia-compartilhada.md)
 - [SUM-0013 — Slides GC1: Novas Abordagens Teóricas e Metodológicas (de SRC-0013)](../knowledge/summaries/SUM-0013-slides-gc1-agencia-compartilhada.md)
 - [SUM-0014 — Rascunho GC1: Quem está no controle? (de SRC-0014, privado)](../knowledge/summaries/SUM-0014-rascunho-gc1-quem-esta-no-controle.md)
+- [SUM-0015 — MCP (O USB das IAs), Código Fonte TV (de SRC-0015)](../knowledge/summaries/SUM-0015-video-mcp-usb-das-ias.md)
+- [SUM-0016 — MCP não é mágica, Augusto Galego (de SRC-0016)](../knowledge/summaries/SUM-0016-video-mcp-nao-e-magica.md)
 
 ## Comparisons
 
