@@ -380,6 +380,15 @@ Ao responder uma pergunta relacionada à Wiki:
 * siga as referências entre documentos;
 * responda somente com informações sustentadas pelo conteúdo da Wiki.
 
+### Apresentação das respostas
+
+Ao explicar algo da Wiki para o usuário:
+
+* elabore a explicação com o conteúdo substantivo dos documentos (definição, características, funcionamento, exemplos), e não apenas com ponteiros para arquivos;
+* exiba os dados diretamente na resposta para que o usuário obtenha a informação sem precisar abrir arquivos;
+* mantenha proveniência e IDs nos arquivos, mas na resposta cite referências (IDs, caminhos, links) apenas se solicitado ou se relevante para rastreabilidade, desambiguação ou verificação;
+* evite respostas que sejam só lista de arquivos/IDs com pouca explicação.
+
 ### Conhecimento externo
 
 O agente **não deve usar conhecimento externo à Wiki durante consultas normais**.
