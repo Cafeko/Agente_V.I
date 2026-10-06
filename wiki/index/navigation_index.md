@@ -24,6 +24,8 @@
 - [SRC-0017 — Novos ITENS, CLASSES e SKIN na DLC de Elden Ring, HadesPlays (vídeo, público)](../sources/metadata/SRC-0017-video-elden-ring-dlc-tarnished-pack.md)
 - [SRC-0018 — Tarnished Edition Switch 2, Bandai Namco Europe (web, público)](../sources/metadata/SRC-0018-elden-ring-tarnished-edition-bandai.md)
 - [SRC-0019 — Tarnished Edition data e preço, IGN (web, público)](../sources/metadata/SRC-0019-elden-ring-tarnished-edition-ign.md)
+- [SRC-0020 — QuickCheck: Introdução a testes baseados em propriedades (slides, privada)](../sources/metadata/SRC-0020-quickcheck-introducao-propriedades.md)
+- [SRC-0021 — QuickCheck: Geradores de dados (slides, privada)](../sources/metadata/SRC-0021-quickcheck-geradores-dados.md)
 
 ## Subjects
 
@@ -36,6 +38,7 @@
 - [SUB-0007 — GranDIHC-BR: Grandes Desafios de Pesquisa em IHC no Brasil 2025-2035](../subjects/SUB-0007-grandihc-br-2025-2035.md)
 - [SUB-0008 — MCP — Model Context Protocol](../subjects/SUB-0008-mcp-model-context-protocol.md)
 - [SUB-0009 — Elden Ring — DLCs Shadow of the Erdtree e Tarnished Edition](../subjects/SUB-0009-elden-ring-dlc-tarnished-edition.md)
+- [SUB-0010 — QuickCheck: testes baseados em propriedades e geradores de dados (Haskell)](../subjects/SUB-0010-quickcheck-testes-propriedades-haskell.md)
 
 ## User Input
 
@@ -62,6 +65,8 @@
 - [SUM-0016 — MCP não é mágica, Augusto Galego (de SRC-0016)](../knowledge/summaries/SUM-0016-video-mcp-nao-e-magica.md)
 - [SUM-0018 — Tarnished Edition Bandai (de SRC-0018)](../knowledge/summaries/SUM-0018-elden-ring-tarnished-edition.md)
 - [SUM-0019 — Tarnished Edition IGN (de SRC-0019)](../knowledge/summaries/SUM-0019-elden-ring-tarnished-edition-ign.md)
+- [SUM-0020 — QuickCheck: Introdução a testes baseados em propriedades (de SRC-0020)](../knowledge/summaries/SUM-0020-quickcheck-introducao-propriedades.md)
+- [SUM-0021 — QuickCheck: Geradores de dados (de SRC-0021)](../knowledge/summaries/SUM-0021-quickcheck-geradores-dados.md)
 
 ## Comparisons
 
