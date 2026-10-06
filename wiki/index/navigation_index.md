@@ -44,6 +44,9 @@
 
 - [USR-0001 — Anotações de estudo: Programação Funcional (Haskell)](../user_input/USR-0001-anotacoes-programacao-funcional-haskell.md)
 - [USR-0002 — Explicação sobre MCP (Model Context Protocol) solicitada ao Gemini](../user_input/USR-0002-explicacao-mcp-gemini.md)
+- [USR-0003 — Guia de Geradores de Dados no QuickCheck (resumo do usuário, com exemplos)](../user_input/USR-0003-guia-geradores-dados-quickcheck.md)
+- [USR-0004 — Testes Baseados em Propriedades com QuickCheck — guia com exemplo por conceito (resumo do usuário)](../user_input/USR-0004-guia-testes-propriedades-exemplos.md)
+- [USR-0005 — QuickCheck e Property-Based Testing — resumo explicativo (resumo do usuário)](../user_input/USR-0005-resumo-quickcheck-property-based-testing.md)
 
 ## Summaries
 

@@ -7,6 +7,10 @@ updated: 2026-10-06
 sources:
   - SRC-0020
   - SRC-0021
+user_inputs:
+  - USR-0003
+  - USR-0004
+  - USR-0005
 knowledge:
   - SUM-0020
   - SUM-0021
@@ -67,9 +71,17 @@ related_subjects:
 - `collect (length xs)`: histograma (ex. 34% tamanho 2, 32% tamanho 0, 26% tamanho 1) mostra distorção para listas curtas causada por `ordered xs`.
 - Solução: substituir condição por gerador (`forAll orderedList`), passando 10000 testes; combinar `collect` + `classify` ("at-head"/"at-tail") para observar onde a inserção cai.
 
-## 6. Relações e proveniência
+## 6. Resumos do usuário (não factualizados como fonte externa)
 
-- Deriva de [SRC-0020](../sources/metadata/SRC-0020-quickcheck-introducao-propriedades.md) via [SUM-0020](../knowledge/summaries/SUM-0020-quickcheck-introducao-propriedades.md) e de [SRC-0021](../sources/metadata/SRC-0021-quickcheck-geradores-dados.md) via [SUM-0021](../knowledge/summaries/SUM-0021-quickcheck-geradores-dados.md).
+- O usuário elaborou três guias próprios, registrados como `user_input` e relacionados a este subject sem conversão automática em fato confirmado (`AGENTS.md:8`):
+  - [USR-0003](../user_input/USR-0003-guia-geradores-dados-quickcheck.md): guia de geradores com um exemplo por conceito (`Gen`/`generate`, `Arbitrary`, `choose`/`elements`, `oneof`/`frequency`, `liftM`/`liftM2`, `sized` para `Tree a`, `forAll` com `genOrdList`, caso `Doc`) + tabela-resumo. Deriva de SRC-0021; complementa a seção 4 com formulações didáticas do usuário.
+  - [USR-0004](../user_input/USR-0004-guia-testes-propriedades-exemplos.md): guia de propriedades com exemplo por conceito (contraste teste tradicional vs. lei geral, edge case `[6,6]`, `prop_max1`, `mNot`, involução/idempotência/invariantes, `==>`, `classify` com 45% triviais, `collect` com histograma 0–2, `forAll orderedList` com 10000 testes, `take n` para `cycle`) + tabela-resumo. Deriva de SRC-0020; complementa as seções 2–3 e 5.
+  - [USR-0005](../user_input/USR-0005-resumo-quickcheck-property-based-testing.md): resumo explicativo (JUnit/HUnit vs. propriedades, benefícios, leis, `mNot`, bug do `qsort` com `<`/`>` estritos, `take n`, `classify`/`collect`/`forAll`, síntese "de exemplos para leis"). Deriva de SRC-0020.
+- Divergência/incerteza preservada: USR-0005 cita **Shrinking** (reduzir o contraexemplo ao menor caso que falha) como benefício; esse conceito **não consta** nos slides registrados (SUM-0020/SUM-0021) e permanece atribuído apenas ao relato do usuário, como não confirmado pela Wiki.
+
+## 7. Relações e proveniência
+
+- Deriva de [SRC-0020](../sources/metadata/SRC-0020-quickcheck-introducao-propriedades.md) via [SUM-0020](../knowledge/summaries/SUM-0020-quickcheck-introducao-propriedades.md) e de [SRC-0021](../sources/metadata/SRC-0021-quickcheck-geradores-dados.md) via [SUM-0021](../knowledge/summaries/SUM-0021-quickcheck-geradores-dados.md), com complementos didáticos de [USR-0003](../user_input/USR-0003-guia-geradores-dados-quickcheck.md), [USR-0004](../user_input/USR-0004-guia-testes-propriedades-exemplos.md) e [USR-0005](../user_input/USR-0005-resumo-quickcheck-property-based-testing.md) (marcados como user input).
 - Complementa [SUB-0001](../subjects/SUB-0001-programacao-funcional-haskell.md) (fundamentos, indução, `reverse`/`++`) como técnica de teste das mesmas funções.
 - Arquivos originais: privados, **sem cópia versionada** (decisão do usuário; `local_file: none` nos metadados; nada em `wiki/sources/files/` foi criado para estas fontes).
 - Bibliografia comum às duas fontes: Claessen–Hughes, ICFP'00.
